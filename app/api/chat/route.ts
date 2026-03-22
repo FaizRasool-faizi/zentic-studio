@@ -14,7 +14,7 @@ ABOUT ZENTIC STUDIO:
 - Based in Pakistan (GMT+5), available Mon-Fri 9am-6pm
 - Contact: hello.faizidevx@gmail.com
 - LinkedIn: linkedin.com/in/mfaizrasool
-- WhatsApp: +92 312 4642268
+- WhatsApp: +92 329 4642268
 
 OUR SERVICES & PRICING:
 - AI Automation: From $799 — n8n, Make, Python pipelines, saves 30-100 hours/month

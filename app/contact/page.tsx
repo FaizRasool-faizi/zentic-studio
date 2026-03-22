@@ -182,7 +182,7 @@ export default function ContactPage() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/923124642268"
+                  href="https://wa.me/923294642268"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ display: "flex", alignItems: "center", gap: "7px", background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.25)", borderRadius: "8px", padding: "8px 14px", fontSize: "12px", fontWeight: 500, color: "#4ade80", textDecoration: "none", cursor: "pointer" }}

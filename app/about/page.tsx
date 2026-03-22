@@ -246,7 +246,7 @@ export default function AboutPage() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/923124642268"
+                href="https://wa.me/923294642268"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
