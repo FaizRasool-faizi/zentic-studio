@@ -4,6 +4,14 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
+// Type declarations for Web Speech API
+declare global {
+  interface Window {
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
+  }
+}
+
 interface Message {
   role: "user" | "assistant";
   content: string;
@@ -23,7 +31,7 @@ export default function ChatbotWidget() {
   const [speaking, setSpeaking] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<InstanceType<typeof window.SpeechRecognition> | null>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -31,29 +39,37 @@ export default function ChatbotWidget() {
 
   // Text to speech
   const speak = useCallback((text: string) => {
-    if (!voiceEnabled) return;
-    window.speechSynthesis.cancel();
-    const clean = text.replace(/[*_#`]/g, "").replace(/👋|🤖|✨|💬|🚀/g, "");
-    const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.rate = 1.05;
-    utterance.pitch = 1;
-    utterance.volume = 1;
+    if (!voiceEnabled || typeof window === 'undefined') return;
+    
+    try {
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/[*_#`]/g, "").replace(/👋|🤖|✨|💬|🚀/g, "");
+      const utterance = new SpeechSynthesisUtterance(clean);
+      utterance.rate = 1.05;
+      utterance.pitch = 1;
+      utterance.volume = 1;
 
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find(
-      (v) => v.name.includes("Google") && v.lang.startsWith("en")
-    ) || voices.find((v) => v.lang.startsWith("en"));
-    if (preferred) utterance.voice = preferred;
+      const voices = window.speechSynthesis.getVoices();
+      const preferred = voices.find(
+        (v) => v.name.includes("Google") && v.lang.startsWith("en")
+      ) || voices.find((v) => v.lang.startsWith("en"));
+      if (preferred) utterance.voice = preferred;
 
-    utterance.onstart = () => setSpeaking(true);
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-    window.speechSynthesis.speak(utterance);
+      utterance.onstart = () => setSpeaking(true);
+      utterance.onend = () => setSpeaking(false);
+      utterance.onerror = () => setSpeaking(false);
+      window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      console.error("Speech synthesis error:", error);
+      setSpeaking(false);
+    }
   }, [voiceEnabled]);
 
   // Stop speaking
   const stopSpeaking = () => {
-    window.speechSynthesis.cancel();
+    if (typeof window !== 'undefined') {
+      window.speechSynthesis.cancel();
+    }
     setSpeaking(false);
   };
 
@@ -94,35 +110,50 @@ export default function ChatbotWidget() {
 
   // Voice input
   const startListening = () => {
-    const SpeechRecognition =
-      window.SpeechRecognition || (window as Window & { webkitSpeechRecognition?: typeof SpeechRecognition }).webkitSpeechRecognition;
+    if (typeof window === 'undefined') return;
+    
+    const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    if (!SpeechRecognition) {
-      alert("Voice input is not supported in your browser. Please use Chrome.");
+    if (!SpeechRecognitionAPI) {
+      alert("Voice input is not supported in your browser. Please use Chrome, Edge, or Safari.");
       return;
     }
 
-    const recognition = new SpeechRecognition();
-    recognition.lang = "en-US";
-    recognition.continuous = false;
-    recognition.interimResults = false;
+    try {
+      const recognition = new SpeechRecognitionAPI();
+      recognition.lang = "en-US";
+      recognition.continuous = false;
+      recognition.interimResults = false;
 
-    recognition.onstart = () => setListening(true);
-    recognition.onend = () => setListening(false);
-    recognition.onerror = () => setListening(false);
+      recognition.onstart = () => setListening(true);
+      recognition.onend = () => setListening(false);
+      recognition.onerror = () => {
+        setListening(false);
+        console.error("Speech recognition error");
+      };
 
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[0][0].transcript;
-      setInput(transcript);
-      setTimeout(() => sendMessage(transcript), 300);
-    };
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+        setTimeout(() => sendMessage(transcript), 300);
+      };
 
-    recognitionRef.current = recognition;
-    recognition.start();
+      recognitionRef.current = recognition;
+      recognition.start();
+    } catch (error) {
+      console.error("Failed to start speech recognition:", error);
+      alert("Could not access microphone. Please check your permissions.");
+    }
   };
 
   const stopListening = () => {
-    recognitionRef.current?.stop();
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+      } catch (error) {
+        console.error("Error stopping recognition:", error);
+      }
+    }
     setListening(false);
   };
 
