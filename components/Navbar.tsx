@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, Zap, Bot } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/pricing", label: "Pricing" },
+  
   { href: "/contact", label: "Contact" },
 ];
 
@@ -38,9 +39,7 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       style={{
         position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 0, left: 0, right: 0,
         zIndex: 50,
         transition: "all 0.3s",
         backgroundColor: scrolled ? "rgba(5,8,16,0.92)" : "transparent",
@@ -59,50 +58,62 @@ export default function Navbar() {
           justifyContent: "space-between",
         }}
       >
-        {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "8px", textDecoration: "none" }}>
-          <div
-            style={{
-              width: "28px",
-              height: "28px",
-              borderRadius: "8px",
-              background: "linear-gradient(135deg, #6366f1, #7c3aed)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+        {/* ── Logo ── */}
+        <Link
+          href="/"
+          style={{
+            display: "flex", alignItems: "center",
+            gap: "8px", textDecoration: "none",
+          }}
+        >
+          <div style={{
+            width: "28px", height: "28px", borderRadius: "8px",
+            background: "linear-gradient(135deg, #6366f1, #7c3aed)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
             <Zap size={14} color="white" fill="white" />
           </div>
-          <span
-            style={{
-              fontFamily: "Syne, sans-serif",
-              fontSize: "18px",
-              fontWeight: 800,
-              letterSpacing: "-0.3px",
-            }}
-          >
-            <span className="gradient-text">ZENTIC</span>
-            <span style={{ color: "rgba(255,255,255,0.35)", fontWeight: 300, marginLeft: "4px" }}>
+          <span style={{
+            fontFamily: "Syne, sans-serif",
+            fontSize: "18px", fontWeight: 800,
+            letterSpacing: "-0.3px",
+          }}>
+            <span style={{
+              background: "linear-gradient(135deg, #6366f1, #a78bfa, #22d3ee)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>
+              ZENTIC
+            </span>
+            <span style={{
+              color: "rgba(255,255,255,0.35)",
+              fontWeight: 300, marginLeft: "4px",
+            }}>
               Studio
             </span>
           </span>
         </Link>
 
-        {/* Desktop links */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "28px" }}
-          className="hidden-mobile">
+        {/* ── Desktop Nav ── */}
+        <nav
+          className="desktop-nav"
+          style={{
+            display: "flex", alignItems: "center", gap: "28px",
+          }}
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 textDecoration: "none",
-                color: pathname === link.href ? "#f1f5f9" : "#94a3b8",
+                color: pathname === link.href ? "#f1f5f9" : "#64748b",
                 transition: "color 0.2s",
                 position: "relative",
                 paddingBottom: "2px",
+                fontWeight: pathname === link.href ? 500 : 400,
               }}
             >
               {link.label}
@@ -111,9 +122,7 @@ export default function Navbar() {
                   layoutId="nav-underline"
                   style={{
                     position: "absolute",
-                    bottom: "-2px",
-                    left: 0,
-                    right: 0,
+                    bottom: "-2px", left: 0, right: 0,
                     height: "1px",
                     background: "linear-gradient(90deg, #6366f1, #a78bfa)",
                     borderRadius: "1px",
@@ -124,42 +133,60 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <Link
-          href="/contact"
-          className="hidden-mobile"
-          style={{
-            fontSize: "13px",
-            fontWeight: 500,
-            background: "linear-gradient(135deg, #6366f1, #7c3aed)",
-            color: "white",
-            padding: "8px 20px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            boxShadow: "0 0 20px rgba(99,102,241,0.3)",
-            transition: "opacity 0.2s",
-          }}
+        {/* ── Desktop CTAs ── */}
+        <div
+          className="desktop-cta"
+          style={{ display: "flex", alignItems: "center", gap: "8px" }}
         >
-          Get Started →
-        </Link>
+          {/* AI Assistant button */}
+          <Link
+            href="/ai-assistant"
+            style={{
+              display: "flex", alignItems: "center", gap: "6px",
+              fontSize: "12px", fontWeight: 500,
+              background: "rgba(99,102,241,0.12)",
+              border: "1px solid rgba(99,102,241,0.25)",
+              color: "#a78bfa",
+              padding: "7px 14px", borderRadius: "8px",
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+          >
+            <Bot size={13} />
+            AI Assistant
+          </Link>
 
-        {/* Mobile toggle */}
+          {/* Get Started button */}
+          <Link
+            href="/contact"
+            style={{
+              fontSize: "13px", fontWeight: 500,
+              background: "linear-gradient(135deg, #6366f1, #7c3aed)",
+              color: "white",
+              padding: "8px 18px", borderRadius: "8px",
+              textDecoration: "none",
+              boxShadow: "0 0 20px rgba(99,102,241,0.25)",
+              transition: "opacity 0.2s",
+            }}
+          >
+            Get Started →
+          </Link>
+        </div>
+
+        {/* ── Mobile Toggle ── */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="show-mobile"
+          className="mobile-toggle"
           style={{
-            background: "none",
-            border: "none",
-            color: "#94a3b8",
-            cursor: "pointer",
-            padding: "4px",
+            background: "none", border: "none",
+            color: "#64748b", cursor: "pointer", padding: "4px",
           }}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* ── Mobile Menu ── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -169,12 +196,15 @@ export default function Navbar() {
             transition={{ duration: 0.22 }}
             style={{
               overflow: "hidden",
-              background: "rgba(12,17,32,0.97)",
+              background: "rgba(5,8,16,0.98)",
               backdropFilter: "blur(20px)",
               borderTop: "1px solid rgba(255,255,255,0.05)",
             }}
           >
-            <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
+            <div style={{
+              padding: "20px 24px",
+              display: "flex", flexDirection: "column", gap: "4px",
+            }}>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -188,26 +218,43 @@ export default function Navbar() {
                       display: "block",
                       fontSize: "15px",
                       textDecoration: "none",
-                      color: pathname === link.href ? "#f1f5f9" : "#94a3b8",
+                      color: pathname === link.href ? "#f1f5f9" : "#64748b",
                       fontWeight: pathname === link.href ? 500 : 400,
+                      padding: "10px 0",
+                      borderBottom: "1px solid rgba(255,255,255,0.04)",
                     }}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-              <div style={{ paddingTop: "8px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+
+              {/* Mobile AI Assistant */}
+              <div style={{ paddingTop: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
+                <Link
+                  href="/ai-assistant"
+                  style={{
+                    display: "flex", alignItems: "center",
+                    justifyContent: "center", gap: "8px",
+                    fontSize: "14px", fontWeight: 500,
+                    background: "rgba(99,102,241,0.12)",
+                    border: "1px solid rgba(99,102,241,0.25)",
+                    color: "#a78bfa",
+                    padding: "11px 20px", borderRadius: "10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <Bot size={15} />
+                  Try AI Assistant
+                </Link>
                 <Link
                   href="/contact"
                   style={{
-                    display: "block",
-                    textAlign: "center",
-                    fontSize: "14px",
-                    fontWeight: 500,
+                    display: "block", textAlign: "center",
+                    fontSize: "14px", fontWeight: 500,
                     background: "linear-gradient(135deg, #6366f1, #7c3aed)",
                     color: "white",
-                    padding: "11px 20px",
-                    borderRadius: "8px",
+                    padding: "11px 20px", borderRadius: "10px",
                     textDecoration: "none",
                   }}
                 >
@@ -219,10 +266,16 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Hide/show helpers for mobile */}
+      {/* Responsive styles */}
       <style>{`
-        @media (min-width: 768px) { .show-mobile { display: none !important; } }
-        @media (max-width: 767px) { .hidden-mobile { display: none !important; } }
+        @media (max-width: 1023px) {
+          .desktop-nav { display: none !important; }
+          .desktop-cta { display: none !important; }
+          .mobile-toggle { display: flex !important; }
+        }
+        @media (min-width: 1024px) {
+          .mobile-toggle { display: none !important; }
+        }
       `}</style>
     </motion.header>
   );

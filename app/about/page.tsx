@@ -8,7 +8,6 @@ import {
   Eye,
   Heart,
   Zap,
-  Users,
   Globe,
   CheckCircle,
 } from "lucide-react";
@@ -42,9 +41,9 @@ const whyUs = [
 ];
 
 const team = [
-  { name: "Faiz Ahmed", role: "Founder & AI Architect", avatar: "FA", bg: "linear-gradient(135deg, #6366f1, #7c3aed)", bio: "Specialist in agentic AI systems, LLM pipelines, and automation architecture." },
-  { name: "Sarah M.", role: "Lead AI Engineer", avatar: "SM", bg: "linear-gradient(135deg, #22d3ee, #0891b2)", bio: "Expert in NLP, RAG systems, and deploying production-grade AI at scale." },
-  { name: "Omar K.", role: "Full Stack Developer", avatar: "OK", bg: "linear-gradient(135deg, #a78bfa, #7c3aed)", bio: "Builds the premium Next.js interfaces and APIs that wrap our AI systems." },
+  { name: "Faiz Rasool", role: "Founder & AI Architect", avatar: "FA", bg: "linear-gradient(135deg, #6366f1, #7c3aed)", bio: "Specialist in agentic AI systems, LLM pipelines, and automation architecture." },
+  { name: "Arham Fatima", role: "Lead AI Engineer", avatar: "AF", bg: "linear-gradient(135deg, #22d3ee, #0891b2)", bio: "Expert in NLP, RAG systems, and deploying production-grade AI at scale." },
+  { name: "Haseeb Ahmad", role: "Full Stack Developer", avatar: "HA", bg: "linear-gradient(135deg, #a78bfa, #7c3aed)", bio: "Builds the premium Next.js interfaces and APIs that wrap our AI systems." },
 ];
 
 const visionMission = [
@@ -69,26 +68,20 @@ export default function AboutPage() {
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "700px", margin: "0 auto" }}>
-          <motion.div
-            initial="hidden" animate="visible" variants={fadeUp} custom={0}
-            style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(99,102,241,0.1)", border: "1px solid rgba(99,102,241,0.25)", borderRadius: "999px", padding: "6px 16px", fontSize: "11px", fontWeight: 600, color: "#a78bfa", marginBottom: "28px", letterSpacing: "0.08em", textTransform: "uppercase" }}
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}
+            style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(99,102,241,0.1)", border: "1px solid rgba(99,102,241,0.25)", borderRadius: "999px", padding: "6px 16px", fontSize: "11px", fontWeight: 600, color: "#a78bfa", marginBottom: "28px", letterSpacing: "0.08em", textTransform: "uppercase" }}>
             <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22d3ee", display: "inline-block" }} />
             Who We Are
           </motion.div>
-          <motion.h1
-            initial="hidden" animate="visible" variants={fadeUp} custom={1}
-            style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(36px, 6vw, 64px)", fontWeight: 800, letterSpacing: "-2px", lineHeight: 1.06, marginBottom: "24px", color: "#f1f5f9" }}
-          >
+          <motion.h1 initial="hidden" animate="visible" variants={fadeUp} custom={1}
+            style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(36px, 6vw, 64px)", fontWeight: 800, letterSpacing: "-2px", lineHeight: 1.06, marginBottom: "24px", color: "#f1f5f9" }}>
             We Are{" "}
             <span style={{ background: "linear-gradient(135deg, #6366f1, #a78bfa, #22d3ee)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               ZENTIC Studio
             </span>
           </motion.h1>
-          <motion.p
-            initial="hidden" animate="visible" variants={fadeUp} custom={2}
-            style={{ fontSize: "18px", color: "#64748b", lineHeight: 1.75, fontWeight: 300, maxWidth: "560px", margin: "0 auto" }}
-          >
+          <motion.p initial="hidden" animate="visible" variants={fadeUp} custom={2}
+            style={{ fontSize: "18px", color: "#64748b", lineHeight: 1.75, fontWeight: 300, maxWidth: "560px", margin: "0 auto" }}>
             A premium AI agency obsessed with building intelligent systems that
             create real, measurable business value — not just impressive demos.
           </motion.p>
@@ -99,11 +92,8 @@ export default function AboutPage() {
       <section style={{ padding: "80px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "32px" }}>
           {visionMission.map((item, i) => (
-            <motion.div
-              key={i}
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
-              style={{ background: "#050810", border: `1px solid ${item.color}20`, borderRadius: "20px", padding: "36px" }}
-            >
+            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
+              style={{ background: "#050810", border: `1px solid ${item.color}20`, borderRadius: "20px", padding: "36px" }}>
               <div style={{ width: "48px", height: "48px", borderRadius: "14px", background: `${item.color}15`, border: `1px solid ${item.color}30`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
                 <item.icon size={22} color={item.color} />
               </div>
@@ -196,6 +186,89 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Social Links ── */}
+      <section style={{ padding: "80px 24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>
+              Find Us Online
+            </span>
+            <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, letterSpacing: "-0.5px", color: "#f1f5f9", marginBottom: "12px" }}>
+              Let&apos;s Connect
+            </h2>
+            <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.7, fontWeight: 300, marginBottom: "36px" }}>
+              Follow our journey, see our latest work, or just say hello.
+            </p>
+
+            <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/mfaizrasool/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex", alignItems: "center", gap: "10px",
+                  background: "rgba(0,119,181,0.1)",
+                  border: "1px solid rgba(0,119,181,0.3)",
+                  borderRadius: "12px", padding: "12px 24px",
+                  fontSize: "14px", fontWeight: 500,
+                  color: "#0ea5e9", textDecoration: "none",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#0ea5e9">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+                LinkedIn
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/FaiziDevx"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex", alignItems: "center", gap: "10px",
+                  background: "rgba(24,119,242,0.1)",
+                  border: "1px solid rgba(24,119,242,0.3)",
+                  borderRadius: "12px", padding: "12px 24px",
+                  fontSize: "14px", fontWeight: 500,
+                  color: "#60a5fa", textDecoration: "none",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#60a5fa">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+                Facebook
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/923124642268"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex", alignItems: "center", gap: "10px",
+                  background: "rgba(37,211,102,0.1)",
+                  border: "1px solid rgba(37,211,102,0.3)",
+                  borderRadius: "12px", padding: "12px 24px",
+                  fontSize: "14px", fontWeight: 500,
+                  color: "#4ade80", textDecoration: "none",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#4ade80">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                </svg>
+                WhatsApp
+              </a>
+
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section style={{ padding: "100px 24px", textAlign: "center" }}>
         <div style={{ maxWidth: "560px", margin: "0 auto" }}>
@@ -206,7 +279,10 @@ export default function AboutPage() {
             <p style={{ fontSize: "16px", color: "#64748b", lineHeight: 1.7, fontWeight: 300, marginBottom: "32px" }}>
               Book a free 30-minute strategy call. We&apos;ll map out exactly how AI can help your business grow.
             </p>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(135deg, #6366f1, #7c3aed)", color: "white", fontWeight: 500, padding: "14px 32px", borderRadius: "12px", textDecoration: "none", fontSize: "15px", boxShadow: "0 0 32px rgba(99,102,241,0.3)" }}>
+            <Link
+              href="/contact"
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(135deg, #6366f1, #7c3aed)", color: "white", fontWeight: 500, padding: "14px 32px", borderRadius: "12px", textDecoration: "none", fontSize: "15px", boxShadow: "0 0 32px rgba(99,102,241,0.3)" }}
+            >
               Book a Free Call <ArrowRight size={16} />
             </Link>
           </motion.div>

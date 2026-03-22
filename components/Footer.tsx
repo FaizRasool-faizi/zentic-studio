@@ -125,7 +125,7 @@ export default function Footer() {
                 }}
               >
                 <Mail size={13} color="#6366f1" />
-                <span>hello@zentic.studio</span>
+                <span>hello.faizidevx@gmail.com</span>
               </div>
 
               {/* Location */}
