@@ -50,7 +50,7 @@ export default function PricingPage() {
     <div style={{ overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section style={{ position: "relative", padding: "160px 24px 100px", textAlign: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", padding: "clamp(80px, 12vh, 160px) max(16px, 4vw) clamp(40px, 8vh, 100px)", textAlign: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
 
@@ -77,8 +77,8 @@ export default function PricingPage() {
       </section>
 
       {/* ── Plans ── */}
-      <section style={{ padding: "0 24px 100px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px", alignItems: "start" }}>
+      <section style={{ padding: "0 max(16px, 4vw) clamp(60px, 8vh, 100px)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "20px", alignItems: "start" }}>
           {plans.map((plan, i) => (
             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
               style={{ position: "relative", background: plan.featured ? "linear-gradient(160deg, rgba(99,102,241,0.1), #0c1120 60%)" : "#0c1120", border: plan.featured ? "1px solid rgba(99,102,241,0.45)" : "1px solid rgba(255,255,255,0.06)", borderRadius: "24px", padding: "36px 32px" }}
@@ -116,12 +116,12 @@ export default function PricingPage() {
       </section>
 
       {/* ── Guarantees ── */}
-      <section style={{ padding: "80px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(40px, 8vh, 80px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: "center", marginBottom: "48px" }}>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, letterSpacing: "-0.5px", color: "#f1f5f9" }}>Our Guarantees to You</h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: "20px" }}>
             {guarantees.map((g, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#050810", border: "1px solid rgba(255,255,255,0.05)", borderRadius: "16px", padding: "28px", textAlign: "center" }}>
@@ -137,7 +137,7 @@ export default function PricingPage() {
       </section>
 
       {/* ── AI Tools Store ── */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: "64px" }}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>AI Tools Store</span>
@@ -145,10 +145,10 @@ export default function PricingPage() {
             <p style={{ fontSize: "16px", color: "#64748b", fontWeight: 300, maxWidth: "440px", lineHeight: 1.7 }}>Buy once. Deploy in minutes. Start generating results today. No subscription, no hidden fees.</p>
           </motion.div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(460px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))", gap: "20px" }}>
             {tools.map((tool, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i % 2}
-                style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "32px", display: "grid", gridTemplateColumns: "1fr auto", gap: "24px" }}
+                style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "clamp(24px, 4vw, 32px)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "24px" }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
@@ -183,7 +183,7 @@ export default function PricingPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "780px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: "center", marginBottom: "64px" }}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>FAQ</span>
@@ -202,7 +202,7 @@ export default function PricingPage() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section style={{ padding: "100px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(99,102,241,0.1), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "560px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>

@@ -104,7 +104,7 @@ export default function ProjectsPage() {
     <div style={{ overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section style={{ position: "relative", padding: "160px 24px 100px", textAlign: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", padding: "clamp(80px, 12vh, 160px) max(16px, 4vw) clamp(40px, 8vh, 100px)", textAlign: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
 
@@ -137,14 +137,14 @@ export default function ProjectsPage() {
       </section>
 
       {/* ── Projects ── */}
-      <section style={{ padding: "40px 24px 100px" }}>
+      <section style={{ padding: "clamp(20px, 4vh, 40px) max(16px, 4vw) clamp(60px, 8vh, 100px)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "80px" }}>
           {projects.map((p) => (
             <motion.div key={p.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <div style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "24px", overflow: "hidden" }}>
 
                 {/* Thumbnail */}
-                <div style={{ height: "220px", background: p.bg, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "40px 48px", position: "relative" }}>
+                <div style={{ minHeight: "220px", background: p.bg, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", padding: "clamp(24px, 4vw, 40px) clamp(24px, 5vw, 48px)", gap: "24px", position: "relative" }}>
                   <div>
                     <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: p.tagColor, background: `${p.tagColor}20`, border: `1px solid ${p.tagColor}40`, borderRadius: "999px", padding: "4px 12px", marginBottom: "16px" }}>
                       {p.tag}
@@ -156,10 +156,10 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Content */}
-                <div style={{ padding: "40px 48px" }}>
+                <div style={{ padding: "clamp(24px, 4vw, 40px) clamp(24px, 5vw, 48px)" }}>
 
                   {/* Results */}
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "16px", marginBottom: "40px", padding: "24px", background: "#050810", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.04)" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 120px), 1fr))", gap: "16px", marginBottom: "clamp(24px, 4vh, 40px)", padding: "24px", background: "#050810", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.04)" }}>
                     {p.results.map((r, j) => (
                       <div key={j} style={{ textAlign: "center" }}>
                         <div style={{ fontFamily: "Syne, sans-serif", fontSize: "28px", fontWeight: 800, background: "linear-gradient(135deg, #6366f1, #22d3ee)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginBottom: "4px" }}>{r.metric}</div>
@@ -169,7 +169,7 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Challenge + Solution */}
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "32px", marginBottom: "40px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "32px", marginBottom: "clamp(24px, 4vh, 40px)" }}>
                     <div>
                       <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
                         <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444" }} />
@@ -211,7 +211,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "16px" }}>

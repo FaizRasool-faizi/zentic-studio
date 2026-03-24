@@ -53,7 +53,7 @@ export default function BlogPage() {
     <div style={{ overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section style={{ position: "relative", padding: "160px 24px 80px", textAlign: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", padding: "clamp(80px, 12vh, 160px) max(16px, 4vw) clamp(40px, 8vh, 80px)", textAlign: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "700px", margin: "0 auto" }}>
@@ -77,7 +77,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── Category filters ── */}
-      <section style={{ padding: "0 24px 48px" }}>
+      <section style={{ padding: "0 max(16px, 4vw) 48px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
           {categories.map((cat, i) => (
             <button key={i} style={{ fontSize: "13px", padding: "7px 16px", borderRadius: "999px", border: cat.active ? "1px solid rgba(99,102,241,0.5)" : "1px solid rgba(255,255,255,0.08)", background: cat.active ? "rgba(99,102,241,0.12)" : "transparent", color: cat.active ? "#a78bfa" : "#64748b", cursor: "pointer", fontWeight: cat.active ? 500 : 400, display: "flex", alignItems: "center", gap: "6px", fontFamily: "DM Sans, sans-serif" }}>
@@ -89,10 +89,10 @@ export default function BlogPage() {
       </section>
 
       {/* ── Featured Post ── */}
-      <section style={{ padding: "0 24px 64px" }}>
+      <section style={{ padding: "0 max(16px, 4vw) 64px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <div style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "24px", overflow: "hidden", cursor: "pointer", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
+            <div style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "24px", overflow: "hidden", cursor: "pointer", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))" }}>
               <div style={{ minHeight: "280px", background: featured.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "80px", position: "relative" }}>
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(99,102,241,0.15), transparent)" }} />
                 <span style={{ position: "relative", zIndex: 1 }}>{featured.emoji}</span>
@@ -123,10 +123,10 @@ export default function BlogPage() {
       </section>
 
       {/* ── All Posts Grid ── */}
-      <section style={{ padding: "0 24px 100px" }}>
+      <section style={{ padding: "0 max(16px, 4vw) clamp(60px, 8vh, 100px)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "#475569", marginBottom: "32px" }}>All Articles</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))", gap: "20px" }}>
             {posts.map((post, i) => (
               <motion.div key={post.slug} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i % 3}
                 style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", overflow: "hidden", cursor: "pointer", display: "flex", flexDirection: "column" }}>
@@ -158,7 +158,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── Newsletter CTA ── */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
         <div style={{ maxWidth: "560px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "16px" }}>

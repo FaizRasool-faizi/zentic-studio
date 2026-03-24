@@ -47,7 +47,7 @@ export default function ServicesPage() {
     <div style={{ overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section style={{ position: "relative", padding: "160px 24px 100px", textAlign: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", padding: "clamp(80px, 12vh, 160px) max(16px, 4vw) clamp(40px, 8vh, 100px)", textAlign: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
 
@@ -93,13 +93,13 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Services List ── */}
-      <section style={{ padding: "80px 24px" }}>
+      <section style={{ padding: "clamp(40px, 8vh, 80px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "32px" }}>
           {services.map((s, i) => (
             <motion.div
               key={i}
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-              style={{ background: s.bg, border: `1px solid ${s.border}`, borderRadius: "24px", padding: "40px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "40px", alignItems: "start" }}
+              style={{ background: s.bg, border: `1px solid ${s.border}`, borderRadius: "24px", padding: "clamp(24px, 4vw, 40px)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "clamp(24px, 4vw, 40px)", alignItems: "start" }}
             >
               {/* Left */}
               <div>
@@ -144,13 +144,13 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Our Process ── */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: "center", marginBottom: "72px" }}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>How We Work</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9" }}>Our Delivery Process</h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: "24px" }}>
             {process.map((p, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#050810", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "16px", padding: "28px", position: "relative", overflow: "hidden" }}>
@@ -165,7 +165,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Bottom CTA ── */}
-      <section style={{ padding: "100px 24px", textAlign: "center" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", textAlign: "center" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "16px" }}>

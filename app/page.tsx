@@ -243,7 +243,7 @@ export default function HomePage() {
         position: "relative", minHeight: "100vh",
         display: "flex", alignItems: "center",
         justifyContent: "center", textAlign: "center",
-        padding: "120px 24px 80px", overflow: "hidden",
+        padding: "clamp(80px, 12vh, 120px) max(16px, 4vw) clamp(40px, 8vh, 80px)", overflow: "hidden",
       }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.18), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 40% 30% at 80% 60%, rgba(34,211,238,0.07), transparent)", pointerEvents: "none" }} />
@@ -313,7 +313,7 @@ export default function HomePage() {
 
       {/* 2. STATS + TRUSTED BY */}
       <section style={{ borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", backgroundColor: "#0c1120" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
           {stats.map((stat, i) => (
             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
               style={{ textAlign: "center", padding: "32px 16px", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
@@ -331,7 +331,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. SERVICES */}
-      <section style={{ padding: "100px 24px", maxWidth: "1280px", margin: "0 auto" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", maxWidth: "1280px", margin: "0 auto" }}>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: "64px" }}>
           <span className="section-label">What We Do</span>
           <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: "16px", color: "#f1f5f9" }}>
@@ -341,7 +341,7 @@ export default function HomePage() {
             From intelligent automation to full-stack development — we engineer AI systems that actually deliver results.
           </p>
         </motion.div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "20px" }}>
           {services.map((s, i) => (
             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
               style={{ background: s.bg, border: `1px solid ${s.color}20`, borderRadius: "20px", padding: "28px", cursor: "pointer" }}
@@ -360,7 +360,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. FEATURED PROJECTS */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
             style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "64px", flexWrap: "wrap", gap: "16px" }}>
@@ -374,7 +374,7 @@ export default function HomePage() {
               View all projects <ArrowRight size={14} />
             </Link>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "24px" }}>
             {projects.map((p, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#050810", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", overflow: "hidden", cursor: "pointer" }}
@@ -399,13 +399,13 @@ export default function HomePage() {
       </section>
 
       {/* 5. HOW IT WORKS */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: "72px" }}>
             <span className="section-label">Our Process</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9" }}>How It Works</h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: "32px" }}>
             {howItWorks.map((step, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} style={{ position: "relative" }}>
                 {i < howItWorks.length - 1 && (
@@ -426,8 +426,8 @@ export default function HomePage() {
       </section>
 
       {/* 6. CHATBOT DEMO */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "64px", alignItems: "center" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "64px", alignItems: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span className="section-label">Live Demo</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "20px", lineHeight: 1.1 }}>
@@ -488,14 +488,14 @@ export default function HomePage() {
       </section>
 
       {/* 7. TOOLS */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: "center", marginBottom: "64px" }}>
             <span className="section-label">AI Tools Store</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "16px" }}>Ready-to-Deploy AI Tools</h2>
             <p style={{ fontSize: "16px", color: "#64748b", fontWeight: 300 }}>Buy once. Deploy instantly. Start generating results today.</p>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "20px" }}>
             {tools.map((tool, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "28px", display: "flex", flexDirection: "column" }}
@@ -514,7 +514,7 @@ export default function HomePage() {
       </section>
 
       {/* 8. TESTIMONIALS */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: "64px" }}>
             <span className="section-label">Client Stories</span>
@@ -522,7 +522,7 @@ export default function HomePage() {
               Trusted by Forward-<br />Thinking Founders
             </h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "20px" }}>
             {testimonials.map((t, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#050810", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "28px" }}>
@@ -544,14 +544,14 @@ export default function HomePage() {
       </section>
 
       {/* 9. PRICING PREVIEW */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: "center", marginBottom: "64px" }}>
             <span className="section-label">Pricing</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "12px" }}>Simple, Transparent Pricing</h2>
             <p style={{ fontSize: "16px", color: "#64748b", fontWeight: 300 }}>No hidden fees. No lock-in. Cancel anytime.</p>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "20px" }}>
             {pricingPlans.map((plan, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ position: "relative", background: plan.featured ? "linear-gradient(160deg, rgba(99,102,241,0.1), #0c1120)" : "#0c1120", border: plan.featured ? "1px solid rgba(99,102,241,0.4)" : "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "32px 28px" }}
@@ -579,7 +579,7 @@ export default function HomePage() {
       </section>
 
       {/* 10. FINAL CTA */}
-      <section style={{ padding: "120px 24px", textAlign: "center", position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(80px, 10vh, 120px) max(16px, 4vw)", textAlign: "center", position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(99,102,241,0.12), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "640px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}

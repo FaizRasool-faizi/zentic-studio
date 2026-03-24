@@ -94,7 +94,7 @@ export default function ContactPage() {
     <div style={{ overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section style={{ position: "relative", padding: "160px 24px 80px", textAlign: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", padding: "clamp(80px, 12vh, 160px) max(16px, 4vw) clamp(40px, 8vh, 80px)", textAlign: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
 
@@ -121,8 +121,8 @@ export default function ContactPage() {
       </section>
 
       {/* ── Main Grid ── */}
-      <section style={{ padding: "0 24px 100px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "48px", alignItems: "start" }}>
+      <section style={{ padding: "0 max(16px, 4vw) clamp(60px, 8vh, 100px)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: "48px", alignItems: "start" }}>
 
           {/* ── Left ── */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -200,7 +200,7 @@ export default function ContactPage() {
                 <p style={{ fontSize: "13px", color: "#475569", marginTop: "-12px" }}>Free consultation · No obligation · Reply within 24hrs</p>
 
                 {/* Name + Email */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: "14px" }}>
                   <div>
                     <label style={{ fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#475569", display: "block", marginBottom: "8px" }}>Full Name *</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required style={inputStyle}
@@ -224,7 +224,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Service + Budget */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: "14px" }}>
                   <div>
                     <label style={{ fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#475569", display: "block", marginBottom: "8px" }}>Service Needed</label>
                     <select name="service" value={formData.service} onChange={handleChange}

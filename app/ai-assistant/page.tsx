@@ -157,7 +157,7 @@ export default function AIAssistantPage() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#050810", padding: "120px 24px 80px" }}>
+    <div style={{ minHeight: "100vh", background: "#050810", padding: "clamp(80px, 12vh, 120px) max(16px, 4vw) clamp(40px, 8vh, 80px)" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         
         {/* Header */}
@@ -294,8 +294,9 @@ export default function AIAssistantPage() {
           {/* Input */}
           <div style={{
             borderTop: "1px solid rgba(255,255,255,0.06)",
-            padding: "20px",
+            padding: "clamp(12px, 2vw, 20px)",
             display: "flex",
+            flexWrap: "wrap",
             gap: "12px"
           }}>
             <button

@@ -64,7 +64,7 @@ export default function AboutPage() {
     <div style={{ overflowX: "hidden" }}>
 
       {/* ── Hero ── */}
-      <section style={{ position: "relative", padding: "160px 24px 100px", textAlign: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", padding: "clamp(80px, 12vh, 160px) max(16px, 4vw) clamp(40px, 8vh, 100px)", textAlign: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.15), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)", backgroundSize: "48px 48px", WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "700px", margin: "0 auto" }}>
@@ -89,8 +89,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Vision & Mission ── */}
-      <section style={{ padding: "80px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "32px" }}>
+      <section style={{ padding: "clamp(40px, 8vh, 80px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "32px" }}>
           {visionMission.map((item, i) => (
             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
               style={{ background: "#050810", border: `1px solid ${item.color}20`, borderRadius: "20px", padding: "36px" }}>
@@ -106,13 +106,13 @@ export default function AboutPage() {
       </section>
 
       {/* ── Our Values ── */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: "64px" }}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>What Drives Us</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9" }}>Our Core Values</h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "20px" }}>
             {values.map((v, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "28px" }}>
@@ -128,8 +128,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Why Choose Us ── */}
-      <section style={{ padding: "100px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "64px", alignItems: "center" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "64px", alignItems: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>Why ZENTIC</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "20px", lineHeight: 1.15 }}>
@@ -152,13 +152,13 @@ export default function AboutPage() {
       </section>
 
       {/* ── Team ── */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: "64px" }}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>The People</span>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9" }}>Meet the Team</h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "20px" }}>
             {team.map((member, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
                 style={{ background: "#0c1120", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "20px", padding: "32px", textAlign: "center" }}>
@@ -175,8 +175,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Stats Banner ── */}
-      <section style={{ padding: "80px 24px", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "32px", textAlign: "center" }}>
+      <section style={{ padding: "clamp(40px, 8vh, 80px) max(16px, 4vw)", backgroundColor: "#0c1120", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 160px), 1fr))", gap: "32px", textAlign: "center" }}>
           {stats.map((stat, i) => (
             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}>
               <div style={{ fontFamily: "Syne, sans-serif", fontSize: "40px", fontWeight: 800, background: "linear-gradient(135deg, #6366f1, #22d3ee)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginBottom: "6px" }}>{stat.num}</div>
@@ -187,7 +187,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Social Links ── */}
-      <section style={{ padding: "80px 24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "clamp(40px, 8vh, 80px) max(16px, 4vw)", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a78bfa", marginBottom: "12px", display: "block" }}>
@@ -270,7 +270,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "100px 24px", textAlign: "center" }}>
+      <section style={{ padding: "clamp(60px, 8vh, 100px) max(16px, 4vw)", textAlign: "center" }}>
         <div style={{ maxWidth: "560px", margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, letterSpacing: "-1px", color: "#f1f5f9", marginBottom: "16px" }}>
